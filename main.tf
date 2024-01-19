@@ -47,8 +47,8 @@ resource "aws_docdb_cluster" "main" {
   vpc_security_group_ids = [ aws_security_group.main.id ]
 }
 
- resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = var.instnace_count
+ resource "aws_docdb_cluster_instance" "main" {
+  count              = var.instance_count
   identifier         = "${local.prefix}-docdb-${count.index + 1}"
   cluster_identifier = aws_docdb_cluster.main.id
   instance_class     = var.instance_class
