@@ -39,6 +39,7 @@ resource "aws_security_group" "main" {
 resource "aws_docdb_cluster" "main" {
   cluster_identifier      = "${local.prefix}-docdb"
   engine                  = "docdb"
+  engine_version          = var.engine_version
   master_username         = data.aws_ssm_parameter.username.value
   master_password         = data.aws_ssm_parameter.password.value
   skip_final_snapshot     = true
